@@ -1,5 +1,5 @@
 
-CFLAGS=-c -Wall
+CFLAGS=-c -Wall -std=c99
 
 fiboheap.o: fiboheap.c
 	gcc $(CFLAGS) fiboheap.c
