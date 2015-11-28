@@ -1,5 +1,4 @@
 
-CUNIT_DIR=/usr/local/Cellar/cunit/2.1-3
 CFLAGS=-c -Wall
 
 fiboheap.o: fiboheap.c
@@ -11,7 +10,7 @@ tests.o: tests.c
 tests: tests.o fiboheap.o
 	gcc -g tests.o fiboheap.o -L$(CUNIT_DIR)/lib -lcunit -o tests
 
-run: tests
+test: tests
 	./tests
 
 check: tests
