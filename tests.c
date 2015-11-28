@@ -20,7 +20,7 @@ void get_several_max_test(void) {
     insert_key(heap, 9);
     insert_key(heap, 4);
     insert_key(heap, 11);
-    
+
     CU_ASSERT_EQUAL(pop_max(heap), 21);
     CU_ASSERT_EQUAL(pop_max(heap), 14);
     CU_ASSERT_EQUAL(pop_max(heap), 13);
@@ -41,7 +41,7 @@ void get_several_min_test(void) {
     insert_key(heap, 9);
     insert_key(heap, 4);
     insert_key(heap, 11);
-    
+
     CU_ASSERT_EQUAL(pop_min(heap), 2);
     CU_ASSERT_EQUAL(pop_min(heap), 3);
     CU_ASSERT_EQUAL(pop_min(heap), 4);
@@ -52,24 +52,25 @@ void get_several_min_test(void) {
 
 void get_one_max_test(void) {
     Fiboheap heap = create_heap(MAX);
-    
+
     insert_key(heap, 11);
-    
+
     CU_ASSERT_EQUAL(11, pop_max(heap));
     destroy(heap);
 }
 
 void get_one_min_test(void) {
     Fiboheap heap = create_heap(MIN);
-    
+
     insert_key(heap, 2);
-    
+
     CU_ASSERT_EQUAL(2, pop_min(heap));
     destroy(heap);
 }
 
 int main ( void ){
     CU_pSuite pSuite = NULL;
+    int number_of_failures;
 
     if ( CUE_SUCCESS != CU_initialize_registry() )
         return CU_get_error();
@@ -103,7 +104,7 @@ int main ( void ){
         CU_cleanup_registry();
         return CU_get_error();
     }
-    
+
 
     CU_basic_set_mode(CU_BRM_VERBOSE);
     CU_basic_run_tests();
@@ -111,6 +112,8 @@ int main ( void ){
     CU_basic_show_failures(CU_get_failure_list());
     printf("\n\n");
 
+    number_of_failures = CU_get_number_of_failures();
     CU_cleanup_registry();
-    return CU_get_error();
+
+    return number_of_failures;
 }
